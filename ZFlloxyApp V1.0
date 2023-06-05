@@ -1,0 +1,87 @@
+from tkinter import *
+from tkinter import messagebox
+ 
+window = Tk()
+ 
+window.title("ZFloxy")
+ 
+window.geometry("275x225")
+ 
+window.resizable(width=False, height=False)
+  
+L3 = Label(window)
+L3.place(x=148,y=200)
+
+def signin():
+    messagebox.showinfo("Soon", "SOON")
+def send():
+    messagebox.showinfo("Soon", "SOON")
+    """send = Tk()
+    send.title("ZFloxy Send Panel")
+    send.geometry("275x225")
+    send.resizable(width=False, height=False)
+    Lb1 = Label(send, text="To Who")
+    Lb1.place(x=15,y=15)
+    Et1 = Entry(send, width=25)
+    Et1.place(x=15,y=45)
+    Lb2 = Label(send, text = "Which Package")
+    Lb2.place(x=15,y=75)
+    Bt1 = Button(send, text="SP Pack", padx= "13",pady="5")
+    Bt1.place(x=15,y=95)
+    Bt2 = Button(send, text="Nitro Pack", padx= "10",pady="5")
+    Bt2.place(x=90,y=95)"""
+def authorize():
+    messagebox.showinfo("Soon", "SOON")
+def block():
+    messagebox.showinfo("Soon", "SOON")
+def newpanelfct():
+    Bt2.destroy()
+    bt2 = Button(window, text="Activate", padx = "13",pady = "5",command=newpanel)
+    bt2.place(x=95,y=135)
+def newpanel():
+    window.destroy()
+    tk = Tk()
+    tk.title("ZFloxy Admin Panel")
+    tk.geometry("275x225")
+    tk.resizable(width=False, height=False)
+    Bt3 = Button(tk, text="Block", padx = "26",pady = "2", command=block)
+    Bt3.place(x=10,y=40)
+    Bt4 = Button(tk, text="Authorize", padx = "15",pady = "2", command=authorize)
+    Bt4.place(x=10,y=70)
+    Bt5 = Button(tk, text="Send ", padx = "26",pady = "2", command=send)
+    Bt5.place(x=10,y=100)
+    tk.mainloop()
+    
+def login():
+      if (E1.get() == str("ID*ADMIN")) and (E2.get() == str("ID*0001")):
+         messagebox.showinfo("Succesful", "Loginned Panel Activating...")
+         global Bt2
+         Bt2 = Button(window, text="Okay", padx="21",pady="5", command=newpanelfct)
+         Bt2.place(x=95,y=135)
+      elif(E1.get() == str("ID*TESTER")) and (E2.get() == str("ID*0002")):
+         messagebox.showinfo("Succesful", "Loginned Panel Activating...")
+         Bt2 = Button(window, text="Okay", padx="21",pady="5")
+         Bt2.place(x=95,y=135)
+      else:
+        messagebox.showerror("Error", "Loginning Error")
+ 
+L1 = Label(window, text="ID Tag")
+L1.place(x=15, y=15)
+ 
+E1 = Entry(window, width=25)
+E1.place(x=15,y=45)
+ 
+L2 = Label(window, text="ID Password")
+L2.place(x=15, y=80)
+ 
+E2 = Entry(window, textvariable=StringVar(),show='*', width=25)
+E2.place(x=15, y=110)
+ 
+bt = Button(window, text="Login ", padx="18",pady="5", command=login)
+bt.place(x=15,y=135)
+
+bt2 = Button(window, text="Sign In ", padx="15",pady="5", command=signin)
+bt2.place(x=15,y=172)
+
+window.mainloop()
+
