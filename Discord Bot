@@ -1,0 +1,32 @@
+import discord
+import random
+# ayricaliklar (intents) değişkeni botun ayrıcalıklarını depolayacak
+intents = discord.Intents.default()
+# Mesajları okuma ayrıcalığını etkinleştirelim
+intents.message_content = True
+# istemci (client) değişkeniyle bir bot oluşturalım ve ayrıcalıkları ona aktaralım
+client = discord.Client(intents=intents)
+
+def gen_pass(pass_length):
+    elements = "+-/abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ1234567890*!&$#?=@<>"
+    password = ""
+
+    for i in range(pass_length):
+        password += random.choice(elements)
+
+    return password
+
+
+@client.event
+async def on_ready():
+    print(f'We have logged in as {client.user}')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('!password'):
+        password = gen_pass(8)
+        await message.channel.send(password)
+    if message.content.startswith('!helpcmd'):
+        await message.channel.send("!passinfo, !password, !send(Deactivated), !giftexplosion(Deactived)")
